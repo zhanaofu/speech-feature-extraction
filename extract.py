@@ -3,9 +3,6 @@ import pandas as pd
 import argparse
 
 
-# python extract.py cm_perception.csv -resample False
-
-
 def mutual_information(matrix):
     """Calculating mutual information from tabulated data"""
     total = matrix.sum()
