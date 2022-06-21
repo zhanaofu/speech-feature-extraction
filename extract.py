@@ -24,7 +24,7 @@ def mutual_arrays(a1,a2):
 
 
 def mutual_x_y(cm,matrix, counts, feature, output_grouping = True, ratio = True,printi = False): 
-    """Tabulating data based on a feature and the outcome from the full confusion matrix. 
+    """Tabulating data based on a binary feature and the outcome from the full confusion matrix. 
     If output_grouping is True, the outcome is also grouped based on the feature"""
     if output_grouping:
         indices0 = []
@@ -76,16 +76,8 @@ def mutual_xi_xj(counts, f1, f2):
             matrix_xx[j,i]=counts[ind].sum()
     return mutual_information(matrix_xx)
 
-
-def mutual_xi_xj_Y(cm, indices_i1, indices_j1): 
-    """Calculating conditional mutual information"""
-    mi = 0
-    for r in range(cm.ny):
-        mi+= cm.py[r]*mutual_xi_xj(cm.matrix[r,], indices_i1, indices_j1)
-    return mi
-
 def mergef(a,b):
-    """Merging features a and b"""
+    """Merging two binary features a and b into a multi-valent feature."""
     c = 0
     uni = {}
     t = []
@@ -97,7 +89,12 @@ def mergef(a,b):
     return t
 
 def J(cm,k,method,merge = False,filt = True):
-    
+    """Selecting features from a comfusion matrix.
+    cm: A confusion_matrix object.
+    k: The number of features to be selected.
+    merge: Whether to merge the selected features for the calculation of mutual information between selected features and the candidate feature.
+    filt: Whether to remove the non-contrasting features from the candidate feature set.
+    """
     try:
         selected = cm.results[method.__name__]
         merged = cm.merged_temp
@@ -169,8 +166,8 @@ def J(cm,k,method,merge = False,filt = True):
     cm.order=indices
     return selected
     
-def rel(cm,p,I_xx,I_xx_Y,n,f):
-    """To maximize MI_xy - (1/k) * MI_xx (Peng et al., 2005)"""
+def RCT(cm,p,I_xx,I_xx_Y,n,f):
+    """To maximize Redundancy-Corrected Transmissibility"""
     if not p in cm.MI_xx:
         cm.MI_xx[p] = mutual_xi_xj(cm.x_counts,cm.features[p[0]],cm.features[p[1]])                  
     I_xx += cm.MI_xx[p]/cm.I_x[f]
@@ -262,7 +259,6 @@ class confusion_matrix:
                                                             ratio=ratio,output_grouping=output_grouping))
 
         self.order = np.arange(self.n_features, dtype='int')  
-      
         
         if not k:
             k = int(np.ceil(np.log2(self.n)))
@@ -295,24 +291,25 @@ class confusion_matrix:
             print('{} '.format(maxk),end='')
             exec('self.results[method] = J(self,{},{},{},{})'.format(maxk,method,merge,False))
             self.selected_features[method] = np.array([self.features[j] for j in self.results[method]])
-        
-        
-    def show_selected(self, method, matrix = False):
-        results = self.results[method]
-        print('Printing {} selected features:'.format(len(results)))
-        print('[-feature] | [+feature] | [MI, MI/maximum, maximum MI]')
-        for k in results:
-            feature = self.features[k]
-            groups = ['' for i in range(self.base)]
+        print('Completed!')
 
-            for i in range(len(feature)):
-                groups[feature[i]]+=self.df.columns[i]
-
-            groups.append(str(mutual_x_y(self,self.matrix,self.x_counts,feature,printi=True)))
-            
-            print(' | '.join(groups))
      
+    def save_selected(self,out):
+        with open(out,'w') as f:
+            f.write(','.join(self.df.columns)+'\n')
+            for i in range(self.selected_features['RCT'].shape[0]):
+                f.write(','.join(map(str,self.selected_features['RCT'][i]))+'\n')
+        with open(out.replace('.csv','.txt'),'w') as f:
+            for i in range(self.selected_features['RCT'].shape[0]):
+                feature = self.selected_features['RCT'][i]
+                groups = ['' for i in range(self.base)]
+
+                for j in range(len(feature)):
+                    groups[feature[j]]+=self.df.columns[j]+' '
+                f.write('| '.join(groups)+'\n')
+
         
+        print('Results saved to {} and {}.'.format(out,out.replace('.csv','.txt')))
         
     def show_terms(self):
         df = pd.DataFrame(columns=['method','no','I_xk_Y','I_xk_xj','I_xk_xj/S',
@@ -344,11 +341,6 @@ class confusion_matrix:
                         except KeyError:
                             self.MI_xx[(a,b)] = mutual_xi_xj(self.x_counts,self.features[a],self.features[b])
                             I_xk_xj += self.MI_xx[(a,b)]
-                        try:
-                            I_xk_xj_Y += self.MI_xx_Y[(a,b)]
-                        except KeyError:
-                            self.MI_xx_Y[(a,b)] = mutual_xi_xj_Y(self,self.features[a],self.features[b])
-                            I_xk_xj_Y += self.MI_xx_Y[(a,b)]
                         I_xk_y_Xj += self.MI_xy[f] - self.MI_xx[(a,b)] + self.MI_xx_Y[(a,b)]
                         
                     df=df.append({'method':method,'no':k+1,'I_xk_Y':self.MI_xy[f],'I_xk_xj':I_xk_xj,
@@ -363,7 +355,7 @@ class confusion_matrix:
             print(df)
            
 
-def balance(df,error = 5000, diag = 5000,subtract =False):
+def balance(df,ratio,subtract):
     
     dfc = df.copy()
     if subtract:
@@ -375,15 +367,10 @@ def balance(df,error = 5000, diag = 5000,subtract =False):
         col = np.copy(dfc.iloc[:,i])
         c = col.sum()
         col[i] = 0
-        dfc.iloc[:,i]=0
-        pcol = col/col.sum()
-
-        for j in np.random.choice(n,error,p=pcol):
-            dfc.iloc[j,i]+=1
-
-        dfc.iloc[i,i]=diag
+        dfc.iloc[:,i]=col/col.sum()
+    np.fill_diagonal(dfc.values,ratio)
+    # print(dfc)
     return dfc
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -392,18 +379,34 @@ if __name__ == '__main__':
 
     parser.add_argument(
         'file', type=str, nargs='?',
-        help='The confusion matrix in a csv file'
+        help='The path to the .csv file containing the confusion matrix. The first column and the first row are the names of the phonemes.'
     )
     parser.add_argument(
-        '-resample', type=bool, default=True,
-        help='Resample the data?'
+        '--out', type=str,
+        help='''The path to the output .csv file. Default: (name of the data file)_features.csv.'''
     )
 
-    args = parser.parse_args()
+    parser.add_argument(
+        '--preprocessing', type=str, default='p', choices=['p','skip'],
+        help='''How to preprocess the data before feature extraction. Options: 'p' - calculating the probabilities of errors from each input phoneme (the probability of errors in each COLUMN adds up to 1 ); 'skip' - no preprocessing. Default: 'p'.'''
+    )
 
+    parser.add_argument(
+        '--ratio', type = float, default=1,
+        help='''If 'p' is selected as the preprocessing method, this argument assigns the ratio between numbers of correct mappings (the numbers in diagonal cells) and (the numbers in off-diagonal cells) incorrect mappings for each INPUT phoneme. Requires a number. Default: 1.'''
+    )
+
+    parser.add_argument(
+        '--subtract', type = str, default=True, choices=['True','False'],
+        help='''If 'p' is selected as the preprocessing method, this argument specifies whether to subtract the smallest value in the matrix minus 1 from the whole matrix. Options: True or False. Default: True.'''
+    )
+ 
+    args = parser.parse_args()
+    if args.out is None:
+        args.out = args.file.replace('.csv','_features.csv')
     df = pd.read_csv(args.file,index_col=0)
-    if args.resample:
-        f = balance(df)
-    cm = confusion_matrix(df)
-    cm.select(method = 'rel',output_grouping=True, ratio = True, filt = True)
-    cm.show_selected('rel')
+    if args.preprocessing=='p':
+        f = balance(df,args.ratio,args.subtract=='True')
+    cm = confusion_matrix(f)
+    cm.select(method = 'RCT',output_grouping=True, ratio = True, filt = True)
+    cm.save_selected(args.out)
