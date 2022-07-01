@@ -237,7 +237,7 @@ class confusion_matrix:
                         self.same_items[method].append([self.df.index[i],self.df.index[j]])
 
 
-    def select(self, feature_lim = None, k = False, method = "mRMR",
+    def select(self, feature_lim = None, k = False, method = "RCT",
                merge = False, output_grouping = False, stop=True,
               ratio = True, filt = False):
         
@@ -355,21 +355,17 @@ class confusion_matrix:
             print(df)
            
 
-def balance(df,ratio,subtract):
+def balance(df,ratio,):
     
     dfc = df.copy()
-    if subtract:
-        dfc = dfc - dfc.min().min() +1
     n = dfc.shape[0]
     
     for i in range(n):
 
         col = np.copy(dfc.iloc[:,i])
-        c = col.sum()
         col[i] = 0
         dfc.iloc[:,i]=col/col.sum()
     np.fill_diagonal(dfc.values,ratio)
-    # print(dfc)
     return dfc
 
 if __name__ == '__main__':
@@ -406,7 +402,7 @@ if __name__ == '__main__':
         args.out = args.file.replace('.csv','_features.csv')
     df = pd.read_csv(args.file,index_col=0)
     if args.preprocessing=='p':
-        f = balance(df,args.ratio,args.subtract=='True')
+        f = balance(df,args.ratio)
     cm = confusion_matrix(f)
     cm.select(method = 'RCT',output_grouping=True, ratio = True, filt = True)
     cm.save_selected(args.out)

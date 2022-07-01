@@ -1,6 +1,6 @@
-b d ð ɡ m n v z ʒ | f k p s ʃ t θ 
-b d ð f ɡ s ʃ v z ʒ θ | k m n p t 
-b ð f m p v θ | d ɡ k n s ʃ t z ʒ 
-b d f ɡ k m p ʃ ʒ | ð n s t v z θ 
-b d f n ʃ t v | ð ɡ k m p s z ʒ θ 
-b k n p s v ʒ θ | d ð f ɡ m ʃ t z 
+p t k f θ s ʃ | b d ɡ v z ð ʒ m n 
+p t k m n | b d ɡ f θ s ʃ v z ð ʒ 
+p b f θ v ð m | t k d ɡ s ʃ z ʒ n 
+p k b d ɡ f ʃ ʒ m | t θ s v z ð n 
+p k ɡ θ s z ð ʒ m | t b d f ʃ v n 
+p k b θ s v ʒ n | t d ɡ f ʃ z ð m 

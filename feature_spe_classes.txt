@@ -1,0 +1,351 @@
+==========================
+==========================
+Natural classes in patterns from rule.
+==========================
+==========================
+Natural class 0
+Phonemes in the natural class: ['s', 'ʃ', 'z', 'ʒ'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'f', 'ɡ', 'k', 'm', 'n', 'p', 't', 'v', 'θ'] 
+----------
+Closest class defined by the features:
+['s', 'ʃ', 'z', 'ʒ']
+[[2, 1], [4, 1], 0]
+----------
+----------
+Natural class 1
+Phonemes in the natural class: ['d', 's', 't', 'z'] 
+Phonemes not in the natural class: ['b', 'ð', 'f', 'ɡ', 'k', 'm', 'n', 'p', 'ʃ', 'v', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['d', 'ð', 's', 't', 'z', 'θ']
+[[3, 0], [4, 1], [5, 1], 2]
+----------
+----------
+Natural class 2
+Phonemes in the natural class: ['ð', 'θ'] 
+Phonemes not in the natural class: ['b', 'd', 'f', 'ɡ', 'k', 'm', 'n', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['ð', 'θ']
+[[1, 1], [2, 0], 0]
+----------
+----------
+Natural class 3
+Phonemes in the natural class: ['k', 'p', 't'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'f', 'ɡ', 'm', 'n', 's', 'ʃ', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['k', 'p', 't']
+[[0, 0], [1, 0], 0]
+----------
+----------
+Natural class 4
+Phonemes in the natural class: ['f', 'k', 'p', 't', 'θ'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'ɡ', 'm', 'n', 's', 'ʃ', 'v', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['f', 'k', 'p', 's', 'ʃ', 't', 'θ']
+[[0, 0], 2]
+----------
+----------
+Natural class 5
+Phonemes in the natural class: ['ɡ', 'k'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'f', 'm', 'n', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['ɡ', 'k']
+[[1, 0], [5, 0], 0]
+----------
+----------
+Natural class 6
+Phonemes in the natural class: ['b', 'm', 'p'] 
+Phonemes not in the natural class: ['d', 'ð', 'f', 'ɡ', 'k', 'n', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'm', 'p']
+[[1, 0], [4, 0], [5, 1], 0]
+----------
+----------
+Natural class 7
+Phonemes in the natural class: ['m', 'n'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['m', 'n']
+[[3, 1], 0]
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 0]
+----------
+----------
+Natural class 8
+Phonemes in the natural class: ['f', 'v'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'ɡ', 'k', 'm', 'n', 'p', 's', 'ʃ', 't', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['f', 'v']
+[[1, 1], [4, 0], 0]
+----------
+----------
+==========================
+Summary
+==========================
+Natural classes with at least one shared feature: 9
+Average number of phoneme difference between the real natural classes and the classes defined by the feature: 0.4444444444444444
+Number of successful matches between the real natural classes and the classes defined by the features: 7
+Average minimal number of features needed for the successful matches: 2.0
+
+
+
+
+
+==========================
+==========================
+Natural classes in patterns from distribution.
+==========================
+==========================
+Natural class 0
+Phonemes in the natural class: ['f', 'k', 'm', 'p', 's'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'ɡ', 'n', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+----------
+----------
+Natural class 1
+Phonemes in the natural class: ['b', 'd', 'ð', 'f', 'ɡ', 'k', 'm', 'n', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ'] 
+Phonemes not in the natural class: [] 
+----------
+Closest class defined by the features:
+----------
+----------
+Natural class 2
+Phonemes in the natural class: ['b', 'd', 'f', 'k', 'm', 'n', 'p', 's', 'ʃ', 't', 'v', 'z', 'θ'] 
+Phonemes not in the natural class: ['ð', 'ɡ', 'ʒ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'ɡ', 'v', 'z', 'ʒ']
+[[0, 1], [3, 0], 4]
+----------
+----------
+Natural class 3
+Phonemes in the natural class: ['d', 's', 't', 'z', 'θ'] 
+Phonemes not in the natural class: ['b', 'ð', 'f', 'ɡ', 'k', 'm', 'n', 'p', 'ʃ', 'v', 'ʒ'] 
+----------
+Closest class defined by the features:
+['d', 'ð', 's', 't', 'z', 'θ']
+[[3, 0], [4, 1], [5, 1], 1]
+----------
+----------
+Natural class 4
+Phonemes in the natural class: ['b', 'd', 'ɡ', 'k', 'p', 't'] 
+Phonemes not in the natural class: ['ð', 'f', 'm', 'n', 's', 'ʃ', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ɡ', 'k', 'p', 't']
+[[1, 0], [3, 0], 0]
+----------
+----------
+Natural class 5
+Phonemes in the natural class: ['b', 'd', 'ɡ', 'k', 'p', 's', 't'] 
+Phonemes not in the natural class: ['ð', 'f', 'm', 'n', 'ʃ', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 7]
+----------
+----------
+Natural class 6
+Phonemes in the natural class: ['s', 't', 'θ'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'f', 'ɡ', 'k', 'm', 'n', 'p', 'ʃ', 'v', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['s', 't', 'θ']
+[[0, 0], [4, 1], [5, 1], 0]
+----------
+----------
+Natural class 7
+Phonemes in the natural class: ['b', 'd', 'f', 'ɡ', 'k', 'm', 'n', 'p', 's', 'ʃ', 't', 'v', 'θ'] 
+Phonemes not in the natural class: ['ð', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['ð', 'z', 'ʒ']
+[[0, 1], [1, 1], [4, 1], 0]
+----------
+----------
+Natural class 8
+Phonemes in the natural class: ['b', 'd', 'ð', 'ɡ', 'm', 'n', 'v'] 
+Phonemes not in the natural class: ['f', 'k', 'p', 's', 'ʃ', 't', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'ɡ', 'm', 'n', 'v', 'z', 'ʒ']
+[[0, 1], 2]
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 5]
+----------
+----------
+Natural class 9
+Phonemes in the natural class: ['b', 'd', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'θ'] 
+Phonemes not in the natural class: ['ð', 'f', 'm', 'n', 'v', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 5]
+----------
+----------
+Natural class 10
+Phonemes in the natural class: ['f', 'k', 'm', 'n', 'p', 's', 'ʃ', 'θ'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'ɡ', 't', 'v', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 6]
+----------
+----------
+Natural class 11
+Phonemes in the natural class: ['f', 'k', 'm', 'n', 'p', 't', 'v'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'ɡ', 's', 'ʃ', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 5]
+----------
+----------
+Natural class 12
+Phonemes in the natural class: ['b', 'd', 'ð', 'f', 'ɡ', 'k', 'm', 'n', 'p', 't', 'v', 'z', 'ʒ', 'θ'] 
+Phonemes not in the natural class: ['s', 'ʃ'] 
+----------
+Closest class defined by the features:
+['s', 'ʃ']
+[[0, 0], [2, 1], [4, 1], 0]
+----------
+----------
+Natural class 13
+Phonemes in the natural class: ['d', 'f', 'n', 'p', 't'] 
+Phonemes not in the natural class: ['b', 'ð', 'ɡ', 'k', 'm', 's', 'ʃ', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'm', 'n', 'p', 's', 't', 'v', 'z', 'θ']
+[[5, 1], 7]
+----------
+----------
+Natural class 14
+Phonemes in the natural class: ['b', 'd', 'f', 'ɡ', 'k', 'm', 'n', 'p', 's', 'ʃ', 't', 'v', 'z', 'θ'] 
+Phonemes not in the natural class: ['ð', 'ʒ'] 
+----------
+Closest class defined by the features:
+['ð', 'z', 'ʒ']
+[[0, 1], [1, 1], [4, 1], 1]
+----------
+----------
+Natural class 15
+Phonemes in the natural class: ['b', 'd', 'f', 'ɡ', 'k', 'm', 'n', 'p', 's', 't', 'v', 'θ'] 
+Phonemes not in the natural class: ['ð', 'ʃ', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['ð', 's', 'ʃ', 'z', 'ʒ', 'θ']
+[[1, 1], [4, 1], 2]
+----------
+----------
+Natural class 16
+Phonemes in the natural class: ['d', 'k', 'z', 'θ'] 
+Phonemes not in the natural class: ['b', 'ð', 'f', 'ɡ', 'm', 'n', 'p', 's', 'ʃ', 't', 'v', 'ʒ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 10]
+----------
+----------
+Natural class 17
+Phonemes in the natural class: ['b', 'ɡ', 'k', 'p'] 
+Phonemes not in the natural class: ['d', 'ð', 'f', 'm', 'n', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'ɡ', 'k', 'p']
+[[1, 0], [3, 0], [4, 0], 0]
+----------
+----------
+Natural class 18
+Phonemes in the natural class: ['b', 'd', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'θ'] 
+Phonemes not in the natural class: ['ð', 'm', 'n', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 3]
+['b', 'd', 'ð', 'ɡ', 'm', 'n', 'v', 'z', 'ʒ']
+[[0, 1], 4]
+----------
+----------
+Natural class 19
+Phonemes in the natural class: ['b', 'd', 'f', 'ɡ', 'k', 'p', 'ʃ', 't', 'v', 'θ'] 
+Phonemes not in the natural class: ['ð', 'm', 'n', 's', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 4]
+----------
+----------
+Natural class 20
+Phonemes in the natural class: ['f', 'k', 'n', 'p', 'θ'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'ɡ', 'm', 's', 'ʃ', 't', 'v', 'z', 'ʒ'] 
+----------
+Closest class defined by the features:
+----------
+----------
+Natural class 21
+Phonemes in the natural class: ['d', 'k', 'm', 'n'] 
+Phonemes not in the natural class: ['b', 'ð', 'f', 'ɡ', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ɡ', 'k', 'm', 'n', 'p', 't']
+[[1, 0], 4]
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 2]
+----------
+----------
+Natural class 22
+Phonemes in the natural class: ['f', 'p', 't', 'z'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'ɡ', 'k', 'm', 'n', 's', 'ʃ', 'v', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'p', 's', 't', 'v', 'z', 'θ']
+[[3, 0], [5, 1], 6]
+----------
+----------
+Natural class 23
+Phonemes in the natural class: ['f', 'k', 'm', 'n', 'p', 't'] 
+Phonemes not in the natural class: ['b', 'd', 'ð', 'ɡ', 's', 'ʃ', 'v', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 4]
+----------
+----------
+Natural class 24
+Phonemes in the natural class: ['b', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 'v'] 
+Phonemes not in the natural class: ['d', 'ð', 'm', 'n', 't', 'z', 'ʒ', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'f', 'ɡ', 'k', 'p', 's', 'ʃ', 't', 'v', 'z', 'ʒ', 'θ']
+[[3, 0], 6]
+----------
+----------
+Natural class 25
+Phonemes in the natural class: ['b', 'ð', 'ɡ', 'n', 'v', 'z', 'ʒ'] 
+Phonemes not in the natural class: ['d', 'f', 'k', 'm', 'p', 's', 'ʃ', 't', 'θ'] 
+----------
+Closest class defined by the features:
+['b', 'd', 'ð', 'ɡ', 'm', 'n', 'v', 'z', 'ʒ']
+[[0, 1], 2]
+----------
+----------
+==========================
+Summary
+==========================
+Natural classes with at least one shared feature: 23
+Average number of phoneme difference between the real natural classes and the classes defined by the feature: 3.347826086956522
+Number of successful matches between the real natural classes and the classes defined by the features: 5
+Average minimal number of features needed for the successful matches: 2.8
+
+
+
+
+
