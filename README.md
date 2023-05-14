@@ -32,6 +32,10 @@ Optional arguments:
 
 `python extract.py cm_perception.csv --preprocessing p --ratio 2 --subtract False`
 
+`python extract.py cm_production.csv --number 7 --out results/production_7.csv`
+
+`python extract.py cm_perception.csv --number 7 --out results/perception_7.csv`
+
 # find_class.py
 
 ## Arguments
@@ -47,8 +51,8 @@ Optional arguments:
 
 ## Examples
 
-`python find_class.py results/production.csv pbase_eng.csv`
+`python find_class.py results/production_7.csv pbase_eng.csv`
 
-`python find_class.py results/perception.csv pbase_eng.csv`
+`python find_class.py results/perception_7.csv pbase_eng.csv`
 
-`python find_class.py feature_spe.csv pbase_eng.csv`
+`python find_class.py results/feature_spe_7.csv pbase_eng.csv`

@@ -129,6 +129,7 @@ def J(cm,k,method,merge = False,filt = True):
             if j_x > j_max:
                 j_max = j_x
                 best = j
+        print(j_max)
                 
                 
         # merge selected features
@@ -355,7 +356,7 @@ class confusion_matrix:
             print(df)
            
 
-def balance(df,ratio,):
+def balance(df,ratio,smooth=1):
     
     dfc = df.copy()
     n = dfc.shape[0]
@@ -364,7 +365,10 @@ def balance(df,ratio,):
 
         col = np.copy(dfc.iloc[:,i])
         col[i] = 0
-        dfc.iloc[:,i]=col/col.sum()
+        if smooth:
+            dfc.iloc[:,i]=(col+smooth)/(col.sum()+smooth*(n-1))
+        else:
+            dfc.iloc[:,i]=col/col.sum()
     np.fill_diagonal(dfc.values,ratio)
     return dfc
 
@@ -377,6 +381,13 @@ if __name__ == '__main__':
         'file', type=str, nargs='?',
         help='The path to the .csv file containing the confusion matrix. The first column and the first row are the names of the phonemes.'
     )
+
+
+    parser.add_argument(
+        '--number', type = int, default=0,
+        help='''The number of features to be selected. Requires a number. Default: 7.'''
+    )
+
     parser.add_argument(
         '--out', type=str,
         help='''The path to the output .csv file. Default: (name of the data file)_features.csv.'''
@@ -403,6 +414,23 @@ if __name__ == '__main__':
     df = pd.read_csv(args.file,index_col=0)
     if args.preprocessing=='p':
         f = balance(df,args.ratio)
+    else:
+        f = df
     cm = confusion_matrix(f)
-    cm.select(method = 'RCT',output_grouping=True, ratio = True, filt = True)
+    cm.select(method = 'RCT',output_grouping=True, ratio = True, filt = True, k = args.number)
     cm.save_selected(args.out)
+
+
+def tab(matrix,feature):
+    indices0 = []
+    indices1 = []
+    for i,v in enumerate(feature):
+        if v:
+            indices1.append(i)
+        else:
+            indices0.append(i)
+    matrix_xy = np.array([[matrix[np.ix_(indices0,indices0)].sum(),
+                      matrix[np.ix_(indices1,indices0)].sum()],
+                     [matrix[np.ix_(indices0,indices1)].sum(),
+                      matrix[np.ix_(indices1,indices1)].sum()]]).T
+    return matrix_xy
